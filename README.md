@@ -6,7 +6,9 @@ It consists of 2 sub-projects:
 
 ### Download
 To download, simply use the following cli command or download as a .zip and extract.
-`git clone https://github.com/x-JP/AllianzGI-Dashboard.git`
+```
+git clone https://github.com/x-JP/AllianzGI-Dashboard.git
+```
 
 ## **SqlApi**
 This is a subproject written in node with Javacript. Its purpose is to interact with an SQL server via queries in order to gather data for visualisation. It uses simple `npm` libraries to establish and simplify this interaction.
@@ -26,7 +28,9 @@ To run the SqlApi app, you will need:
 **If you want to test this project before any modification**, then you will have to create a new MySQL database from the MySqlDump: `SAdb.sql`
 To check that this is working, a `MySQL server` instance must be setup and running  on the user's computer.
 To spin up the exact database that I used during development, use the following command in a terminal app. Then enter your password for the MySQL **root** user (when prompted).
-`$ mysql -u root -p SystemAvailability < SAdb.sql`
+```
+$ mysql -u root -p SystemAvailability < SAdb.sql
+```
 
 For simplicity I used the **root** user. All the database credentials and connection details for a MySQL instance can be found inside of `SqlApi/index.js` in the 'dbCreds' variable.
 ```javascript
@@ -40,7 +44,9 @@ const dbCreds = {
 I called my Database `SystemAvailability` but in theory it could be anything and eventually will be called something similar to `Trader.dbo`.
 
 **You will also have to run the following command in the SqlApi directory to install all the required packages:**
-`npm i`
+```
+npm i
+```
 
 ### Modification:
 As I wrote before, modification is **required** for this to run successfully on anything other than the exact setup I used for development. This is because it currently interfaces with a MySQL server and in the future it will need to interact with an [MS SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-2019 "SQL Server 2019"). This will not only involve changing the way the connection works but also potentially changing the SQL queries too.
@@ -49,7 +55,9 @@ As I wrote before, modification is **required** for this to run successfully on 
 The project currently uses an `npm` package called `mysql` to interface with the database.
 To transfer over to mssql, a new `npm` package will be required. For this I would recommend (at first look) [`mssql`](https://www.npmjs.com/package/mssql "mssql npm package") which is very similar syntactically to the `mysql` package however you will have to look through the docs to find the necessary modifications to code.
 You can install this package with the following command in the SqlApi directory (assuming npm and node are already installed):
-`npm i mssql`
+```
+npm i mssql
+```
 
 You may also wish to uninstall the now redundant `mysql` package which can be done with the following command though not strictly necessary for the project to function properly and may cause undesired effects: `npm uninstall mysql`
 
@@ -81,9 +89,13 @@ They are as follows:
 
 ### Actually Running the API
 To actually run SqlApi, simply run this command from the `SqlApi` directory:
-`npm run start`
+```
+npm run start
+```
 This uses the npm package `nodemon` to improve development effiency so you may find that you get an error unless you install it. To install `nodemon` globally use ths command:
-`npm i -g nodemon`
+```
+npm i -g nodemon
+```
 
 *NOTE: Node will throw an error if you try to run the project with `node index.js` because I'm using es6 syntax with [BabelJS](https://babeljs.io/ "BabelJS")
 You can also edit the npm `start` scipt by editing the `package.json`.*
@@ -103,7 +115,9 @@ This is only if all the initial testing worked with the SqlApi.
 
 ### Running the Dashboard App
 Simply run the following :point_down: from the `Dashboard` directory.
-`dotnet run`
+```
+dotnet run
+```
 **OR** run through Visual Studio.
 
 You could also build it into an executable or `dll` or something which might be more convenient.
@@ -124,4 +138,3 @@ The actual dashboard UI consists of two echarts:
 Below the echarts, you should see a table which will contain the list of trades for a given BatchGUID. Blazor was very fiddly about the way the `<input>` text-box worked so follow the instructions in bold on the page to make sure the table works properly.
 
 <!--Once you've got it working you should have something looking like this:-->
-
