@@ -144,7 +144,67 @@ Once you've got it working you should have something looking like this:
 ![](.git_example/graph2.gif)
 ![](.git_example/table.gif)
 
+## Footer
+Here are the original queries I was given as an example for accessing the Database which this whole project was built around.
+```sql
+-- query 1, retrieve the duration for guideline queuing, execution and overall durations
 
+select tb.TradeBatchId,
+
+       gtpa.BatchGuid,
+
+       datediff(ss, gtpa.Queued, gtpa.Started) as QueueDuration,
+
+       datediff(ss, gtpa.Started, gtpa.Processed) as ExecDuration,
+
+       datediff(ss, gtpa.Queued, gtpa.Processed) as OverallDuration,
+
+       gtpa.*
+
+from   Trader.dbo.GLSTradeProcessAudit gtpa
+
+inner join Trader.dbo.TradeBatches tb on tb.BatchGuid = gtpa.BatchGUID
+
+       where  gtpa.Queued >= '20190101'
+
+--And datediff(ss, gtpa.Started, gtpa.Processed)>200
+
+Order By gtpa.Queued desc
+
+ 
+
+ 
+
+-- query 2 - you could join the batchGUID above, onto below, to get  information about the trades in a check
+
+select top 25 ts.BatchGuid,  t.TradeID, t.SecID, ca.ClientAcctNo, ca.ReportName from Trader.dbo.TradeSet ts
+
+inner join Trader.dbo.TradeSetTrades tst on ts.TradeSetId = tst.TradeSetId
+
+inner join Trader.dbo.Trades t on t.TradeId = tst.TradeId
+
+inner join Trader.dbo.TradeAllocations ta on ta.TradeID = tst.TradeId
+
+inner join Trader.dbo.ClientAccounts ca on ta.AccountID = ca.AccountID
+
+order by t.TradeId desc
+
+ 
+
+ 
+
+-- query 3 - from the batch guid you can the amount of accounts in a guideline check. This is obviously interesting when joined with query 1
+
+select top 25 ts.BatchGuid,  count  (distinct ta.AccountID) as AccountsCheckedInBatch from Trader.dbo.TradeSet ts
+
+inner join Trader.dbo.TradeSetTrades tst on ts.TradeSetId = tst.TradeSetId
+
+inner join Trader.dbo.Trades t on t.TradeId = tst.TradeId
+
+inner join Trader.dbo.TradeAllocations ta on ta.TradeID = tst.TradeId
+
+group by ts.BatchGuid
+```
 
 
 
