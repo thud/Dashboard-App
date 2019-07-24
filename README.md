@@ -1,11 +1,13 @@
 # AllianzGI-Dashboard
+![](.git_example/scroll.gif)
+
 AllianzGI-Dashboard is a local web-app written in NodeJS and the Blazor .NET Framework.
 It consists of 2 sub-projects:
 1. **SqlApi** - Middleware written in Node that interfaces with the database.
 2. **Dashboard** - Data visualisaton dashboard for graphing data. Interfaces with SqlApi via a RESTful API.
 
 ### Download
-To download, simply use the following cli command or download as a .zip and extract.
+To download, simply use the following cli command :point_down: or download as a .zip and extract.
 ```
 git clone https://github.com/x-JP/AllianzGI-Dashboard.git
 ```
@@ -27,7 +29,7 @@ To run the SqlApi app, you will need:
 ### Initial Testing:
 **If you want to test this project before any modification**, then you will have to create a new MySQL database from the MySqlDump: `SAdb.sql`
 To check that this is working, a `MySQL server` instance must be setup and running  on the user's computer.
-To spin up the exact database that I used during development, use the following command in a terminal app. Then enter your password for the MySQL **root** user (when prompted).
+To spin up the exact database that I used during development, use the following command :point_down: in a terminal app. Then enter your password for the MySQL **root** user (when prompted).
 ```
 $ mysql -u root -p SystemAvailability < SAdb.sql
 ```
@@ -43,7 +45,7 @@ const dbCreds = {
 ```
 I called my Database `SystemAvailability` but in theory it could be anything and eventually will be called something similar to `Trader.dbo`.
 
-**You will also have to run the following command in the SqlApi directory to install all the required packages:**
+**You will also have to run the following command** :point_down: **in the SqlApi directory to install all the required packages:**
 ```
 npm i
 ```
@@ -54,7 +56,7 @@ As I wrote before, modification is **required** for this to run successfully on 
 ##### Transferring to SQL Server (mssql)
 The project currently uses an `npm` package called `mysql` to interface with the database.
 To transfer over to mssql, a new `npm` package will be required. For this I would recommend (at first look) [`mssql`](https://www.npmjs.com/package/mssql "mssql npm package") which is very similar syntactically to the `mysql` package however you will have to look through the docs to find the necessary modifications to code.
-You can install this package with the following command in the SqlApi directory (assuming npm and node are already installed):
+You can install this package with the following command :point_down: in the SqlApi directory (assuming npm and node are already installed):
 ```
 npm i mssql
 ```
@@ -64,7 +66,7 @@ You may also wish to uninstall the now redundant `mysql` package which can be do
 Having installed this new package, you will now have to crawl through the docs and change all the function names in my code to fit the new package. This may also require changing the structure of the code. For example, I think the `mssql` package uses a different way of storing connection credentials but I may be wrong.
 
 You may also have to change the queries.
-These can be found in `SqlApi/index.js`. For example:
+These can be found in `SqlApi/index.js`. For example :point_down::
 ```javascript
 const durations_Querystring = `select tb.TradeBatchId,
     gtpa.BatchGuid,
@@ -88,11 +90,11 @@ They are as follows:
 - **"http://localhost:3000/api/accountscheckedinbatch/<BatchGUID>"** - Returns number of accounts checked in a specified Batch.
 
 ### Actually Running the API
-To actually run SqlApi, simply run this command from the `SqlApi` directory:
+To actually run SqlApi, simply run this command :point_down: from the `SqlApi` directory:
 ```
 npm run start
 ```
-This uses the npm package `nodemon` to improve development effiency so you may find that you get an error unless you install it. To install `nodemon` globally use ths command:
+This uses the npm package `nodemon` to improve development effiency so you may find that you get an error unless you install it. To install `nodemon` globally use this command:
 ```
 npm i -g nodemon
 ```
@@ -137,4 +139,13 @@ The actual dashboard UI consists of two echarts:
 
 Below the echarts, you should see a table which will contain the list of trades for a given BatchGUID. Blazor was very fiddly about the way the `<input>` text-box worked so follow the instructions in bold on the page to make sure the table works properly.
 
-<!--Once you've got it working you should have something looking like this:-->
+Once you've got it working you should have something looking like this:
+![](.git_example/graph1.gif)
+![](.git_example/graph2.gif)
+![](.git_example/table.gif)
+
+
+
+
+
+:smirk: Made by JP

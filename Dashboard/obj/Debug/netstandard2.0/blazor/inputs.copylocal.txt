@@ -1,8 +1,8 @@
-/home/jp/.nuget/packages/microsoft.aspnetcore.blazor/3.0.0-preview4-19216-03/lib/netstandard2.0/Microsoft.AspNetCore.Blazor.dll
-/home/jp/.nuget/packages/microsoft.aspnetcore.components/3.0.0-preview4-19216-03/lib/netstandard2.0/Microsoft.AspNetCore.Components.dll
-/home/jp/.nuget/packages/microsoft.aspnetcore.components.browser/3.0.0-preview4-19216-03/lib/netstandard2.0/Microsoft.AspNetCore.Components.Browser.dll
-/home/jp/.nuget/packages/microsoft.extensions.dependencyinjection/3.0.0-preview4.19216.2/lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.dll
-/home/jp/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/3.0.0-preview4.19216.2/lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
-/home/jp/.nuget/packages/microsoft.jsinterop/3.0.0-preview4.19216.2/lib/netstandard2.0/Microsoft.JSInterop.dll
-/home/jp/.nuget/packages/mono.webassembly.interop/3.0.0-preview4.19216.2/lib/netstandard2.0/Mono.WebAssembly.Interop.dll
-/home/jp/.nuget/packages/system.componentmodel.annotations/4.6.0-preview4.19212.13/lib/netstandard2.0/System.ComponentModel.Annotations.dll
+C:\Users\Jasper Parish\.nuget\packages\microsoft.aspnetcore.blazor\3.0.0-preview4-19216-03\lib\netstandard2.0\Microsoft.AspNetCore.Blazor.dll
+C:\Users\Jasper Parish\.nuget\packages\microsoft.aspnetcore.components\3.0.0-preview4-19216-03\lib\netstandard2.0\Microsoft.AspNetCore.Components.dll
+C:\Users\Jasper Parish\.nuget\packages\microsoft.aspnetcore.components.browser\3.0.0-preview4-19216-03\lib\netstandard2.0\Microsoft.AspNetCore.Components.Browser.dll
+C:\Users\Jasper Parish\.nuget\packages\microsoft.extensions.dependencyinjection\3.0.0-preview4.19216.2\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Jasper Parish\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\3.0.0-preview4.19216.2\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Jasper Parish\.nuget\packages\microsoft.jsinterop\3.0.0-preview4.19216.2\lib\netstandard2.0\Microsoft.JSInterop.dll
+C:\Users\Jasper Parish\.nuget\packages\mono.webassembly.interop\3.0.0-preview4.19216.2\lib\netstandard2.0\Mono.WebAssembly.Interop.dll
+C:\Users\Jasper Parish\.nuget\packages\system.componentmodel.annotations\4.6.0-preview4.19212.13\lib\netstandard2.0\System.ComponentModel.Annotations.dll
