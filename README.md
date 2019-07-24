@@ -4,6 +4,10 @@ It consists of 2 sub-projects:
 1. **SqlApi** - Middleware written in Node that interfaces with the database.
 2. **Dashboard** - Data visualisaton dashboard for graphing data. Interfaces with SqlApi via a RESTful API.
 
+### Download
+To download, simply use the following cli command or download as a .zip and extract.
+`git clone https://github.com/x-JP/AllianzGI-Dashboard.git`
+
 ## **SqlApi**
 This is a subproject written in node with Javacript. Its purpose is to interact with an SQL server via queries in order to gather data for visualisation. It uses simple `npm` libraries to establish and simplify this interaction.
 
@@ -17,9 +21,6 @@ To run the SqlApi app, you will need:
 2. [**npm**](https://www.npmjs.com/ "npmjs.org")
 
 
-### Download
-To download, simply use the following cli command or download as a .zip and extract.
-`git clone https://github.com/x-JP/AllianzGI-Dashboard.git`
 
 ### Initial Testing:
 **If you want to test this project before any modification**, then you will have to create a new MySQL database from the MySqlDump: `SAdb.sql`
@@ -68,7 +69,7 @@ const durations_Querystring = `select tb.TradeBatchId,
     where  gtpa.Queued >= '20190101';`
 ```
 
-### Interaction with API:
+### Interaction with the API:
 There are 6 endpoints defined for this API. They are all accessed via simple **GET requests** returning data in **JSON** format.
 They are as follows:
 - **"http://localhost:3000/api/guidelinecheckdurations"** - Returns `QueueDuration, ExecDuration and OverallDuration` for each and every batch. 
@@ -78,7 +79,7 @@ They are as follows:
 - **"http://localhost:3000/api/accountscheckedinbatch/"** - Returns list of batches with a quantity of accounts checked in each.
 - **"http://localhost:3000/api/accountscheckedinbatch/<BatchGUID>"** - Returns number of accounts checked in a specified Batch.
 
-### Actually Running The API
+### Actually Running the API
 To actually run SqlApi, simply run this command from the `SqlApi` directory:
 `npm run start`
 This uses the npm package `nodemon` to improve development effiency so you may find that you get an error unless you install it. To install `nodemon` globally use ths command:
@@ -86,3 +87,41 @@ This uses the npm package `nodemon` to improve development effiency so you may f
 
 *NOTE: Node will throw an error if you try to run the project with `node index.js` because I'm using es6 syntax with [BabelJS](https://babeljs.io/ "BabelJS")
 You can also edit the npm `start` scipt by editing the `package.json`.*
+
+## **Dashboard**
+This is a subproject written with the Blazor framework for .NET. Its purpose is to consume data from the SqlApi app and visualise it using a javascript library called `echarts`. The major logic is found in the `Pages/index.razor` file, however some code has to be positioned on the javascript side aswell (`wwwroot/index.html`).
+
+### Prerequisites
+1. [.NET Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0 ".NET Core 3.0 Download") - Blazor is a bleeding edge framework so a preview version of the .NET Core framework is required.
+
+Make sure that you have the `dotnet` cli tools installed properly so that you can run the app from the command line.
+Alternatively, you could run and build all from Visual Studio if you know what your doing but I haven't tried that.
+
+### Initial Testing
+For initial testing, no modification should be required. However, I fully expect something to break so GOOD LUCK! :thumbsup:
+This is only if all the initial testing worked with the SqlApi.
+
+### Running the Dashboard App
+Simply run the following :point_down: from the `Dashboard` directory.
+`dotnet run`
+**OR** run through Visual Studio.
+
+You could also build it into an executable or `dll` or something which might be more convenient.
+I am also considering wrapping the whole thing with some sort of `npm`-like script system to make running the project as a whole much easier. 
+
+##### Then you can access the Dashboard page by going to: http://localhost:5000/
+
+### Dashboard UI
+At the top of the Dashboard 
+
+The actual dashboard UI consists of two echarts:
+- The first is a line graph with three series against dates.
+    1. *QueueDuration* for Batch doing guideline checks
+    2. *ExecutionDuration* for Batch doing guideline checks
+    3. *OverallDuration* for Batch doing guideline checks (QueueDuration + ExecutionDuration)
+- The second is a scatter graph with **No. of accounts checked in batch** (on the x-axis) against **ExecutionDuration** (on the y-axis)
+
+Below the echarts, you should see a table which will contain the list of trades for a given BatchGUID. Blazor was very fiddly about the way the `<input>` text-box worked so follow the instructions in bold on the page to make sure the table works properly.
+
+<!--Once you've got it working you should have something looking like this:-->
+
