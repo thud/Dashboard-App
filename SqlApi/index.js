@@ -21,7 +21,7 @@ app.get("/", (req, res, next) => {
 const dbCreds = {
     host: 'localhost',
     user: 'root',
-    password: 'woodbine',
+    password: 'Your_password_here',
     database: 'SystemAvailability'
 }
 
