@@ -19,8 +19,6 @@
     <script src="moment.js"></script>
 
     <script type="text/javascript">
-        //console.log(dummyData.data.map((item, index) => [item.date, item.time]));
-        //console.log(dummyData.data.map((item, index) => [item.date, item.time]));
 
         function copyStringToClipboard (str) {
             // Create new element
@@ -63,7 +61,7 @@
             // specify chart configuration item and data
             var option1 = {
                 title: {
-                    text: 'BatchQueue Date vs. QueueDuration',
+                    text: 'BatchQueue Date vs. Queue/Execution/Overall Duration',
                 },
                 legend: {
                     data: ['Queueing Duration', 'Execution Duration', 'Overall Duration'],
@@ -84,9 +82,9 @@
                                 moment(object[2].value).format('HH:mm') + "<br/>" +
                                 "BatchGUID: " +
                                 "<button class=\"btn btn-info batch-button\" onclick=\"BatchGUIDButtonHandler(" +
-                                batchQuantities[object[0]
+                                batches[object[0]
                                     .dataIndex].batchGUID + ")\">" +
-                                batchQuantities[object[0]
+                                batches[object[0]
                                     .dataIndex].batchGUID + "</button>";
 
                             //moment(object[0].value).format('HH:mm')
@@ -151,7 +149,6 @@
             };
 
             // use configuration item and data specified to show chart
-            //console.log(option);
             chart1.setOption(option1);
 
             return 0;
@@ -170,8 +167,7 @@
 
 
         async function displayGraph2(batchQuantities, batches) {
-            //var json = await fetchJSON(url);
-            console.log("batchQuantities: "+batchQuantities + "\nbatches: "+batches);
+            //console.log("batchQuantities: "+batchQuantities + "\nbatches: "+batches);
          
 
             // based on prepared DOM, initialize echarts instance
@@ -180,7 +176,7 @@
             // specify chart configuration item and data
             var option2 = {
                 title: {
-                    text: 'Accounts Checked in Batch vs Time Taken',
+                    text: 'Accounts Checked in Batch vs Time Taken to Execute',
                 },
                 legend: {
                     data: ['Accounts Checked In Batch'],
@@ -189,11 +185,12 @@
                     trigger: 'axis',
                     showDelay: 0,
                     enterable: true,
+                    transitionDuration: 1.5,
                     formatter: (object) => {
                         if (object[0].value) {
-                            console.log(object);
+                            //console.log(object);
                             return dateFromQueued(object[0].value[1]) + "<br/>" +
-                                object[0].name + " <br/> " +
+                                //object[0].name + " <br/> " +
                                 object[0].marker + object[0].seriesName + ": " + object[0].value[0] + "<br/>" +
                                 "BatchGUID: " +
                                 "<button class=\"btn btn-info batch-button\" onclick=\"BatchGUIDButtonHandler(" +
@@ -216,7 +213,7 @@
                         }
                     }
                 },
-                animationDuration: 1000,
+                animationDuration: 2000,
                 toolbox: {
                     feature: {
                         //dataView: {},
@@ -246,16 +243,17 @@
                     name: 'Accounts Checked In Batch',
                     type: 'scatter',
                     data: batchQuantities.map((batchQuantity) => {
-                        console.log(batchQuantity);
+                        //console.log(batchQuantity);
                         const execTime = timeFromBatchGUID(batchQuantity.batchGuid, batches);
-                        console.log("exec time: "+execTime);
+                        //console.log("exec time: "+execTime);
                         return [parseInt(batchQuantity.accountsCheckedInBatch), moment(execTime, "HH:mm").format()];
                     }),
                 }]
             };
 
-            console.log("x-axis: " + option2.xAxis.data);
-            console.log("y-axis: " + option2.series[0].data);
+            //console.log("x-axis: " + option2.xAxis.data);
+            //console.log("y-axis: " + option2.series[0].data);
+            
             // use configuration item and data specified to show chart
             chart2.setOption(option2);
             return 0;
