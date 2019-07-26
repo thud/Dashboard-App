@@ -83,11 +83,11 @@ const durations_Querystring = `select tb.TradeBatchId,
 There are 6 endpoints defined for this API. They are all accessed via simple **GET requests** returning data in **JSON** format.
 They are as follows:
 - **"http://localhost:3000/api/guidelinecheckdurations"** - Returns `QueueDuration, ExecDuration and OverallDuration` for each and every batch. 
-- **"http://localhost:3000/api/guidelinecheckdurations/<BatchGUID>"** - Returns `QueueDuration, ExecDuration and OverallDuration` *for 1 particular Batch*.
+- **"http://localhost:3000/api/guidelinecheckdurations/*BatchGUID*"** - Returns `QueueDuration, ExecDuration and OverallDuration` *for 1 particular Batch*.
 - **"http://localhost:3000/api/tradeinformationonbatches/"** - Returns list of trades with information on each.
-- **"http://localhost:3000/api/tradeinformationonbatches/<BatchGUID>"** - Returns list of trades with information on each *for just 1 Batch*.
+- **"http://localhost:3000/api/tradeinformationonbatches/*BatchGUID*"** - Returns list of trades with information on each *for just 1 Batch*.
 - **"http://localhost:3000/api/accountscheckedinbatch/"** - Returns list of batches with a quantity of accounts checked in each.
-- **"http://localhost:3000/api/accountscheckedinbatch/<BatchGUID>"** - Returns number of accounts checked in a specified Batch.
+- **"http://localhost:3000/api/accountscheckedinbatch/*BatchGUID*"** - Returns number of accounts checked in a specified Batch.
 
 ### Actually Running the API
 To actually run SqlApi, simply run this command :point_down: from the `SqlApi` directory:
