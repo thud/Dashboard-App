@@ -1,7 +1,7 @@
-# AllianzGI-Dashboard
+# Dashboard-App
 ![](.git_example/scroll.gif)
 
-AllianzGI-Dashboard is a local web-app written in NodeJS and the Blazor .NET Framework.
+Dashboard-App is a local web-app written in NodeJS and the Blazor .NET Framework.
 It consists of 2 sub-projects:
 1. **SqlApi** - Middleware written in Node that interfaces with the database.
 2. **Dashboard** - Data visualisaton dashboard for graphing data. Interfaces with SqlApi via a RESTful API.
@@ -9,7 +9,7 @@ It consists of 2 sub-projects:
 ### Download
 To download, simply use the following cli command :point_down: or download as a .zip and extract.
 ```
-git clone https://github.com/x-JP/AllianzGI-Dashboard.git
+git clone https://github.com/x-JP/Dashboard-App.git
 ```
 
 ## **SqlApi**
